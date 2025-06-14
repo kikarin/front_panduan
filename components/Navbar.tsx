@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
-import { Menu, X, Search, ChevronDown } from "lucide-react";
+import { Menu, X, Search, } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const Navbar = () => {
@@ -162,7 +162,7 @@ const Navbar = () => {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex flex-wrap justify-center items-center gap-x-6 gap-y-2 py-3">
-            {productItems.map((item, idx) =>
+            {productItems.map((item) =>
               item.isHighlight ? (
                 <span
                   key={item.label}
