@@ -208,7 +208,7 @@ export default function SearchSection() {
 
           {/* Search Results Dropdown */}
           {(results.length > 0 || (isSearchFocused && query.length === 0)) && (
-            <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-20">
+            <div className="top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden z-20">
               {query.length === 0 && isSearchFocused ? (
                 // Show popular searches when focused but no query
                 <div className="p-6">
