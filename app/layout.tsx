@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Karla } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import AOSProvider from "@/components/AOSProvider"; // komponen client
+import AOSProvider from "../components/AOSProvider"; 
 
 export const metadata: Metadata = {
   title: "Panduan",

@@ -1,9 +1,18 @@
+import React from "react";
 import PanduanDetail from "@/components/PanduanDetail";
+
+interface GuideContent {
+  category: string;
+  title: string;
+  updated: string;
+  subtopics: Array<{ title: string; href: string }>;
+  content: React.ReactElement;
+}
 
 export default function DetailPage({ params }: { params: { slug: string } }) {
   const { slug } = params;
 
-  const guideMap: Record<string, any> = {
+  const guideMap: Record<string, GuideContent> = {
     "hosting-cpanel": {
       category: "Panduan Lengkap Hosting",
       title: "Cara Mengelola Hosting dengan cPanel",
@@ -48,13 +57,13 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
           <ol>
             <li>Login ke cPanel</li>
             <li>
-              Cari dan klik <strong>"File Manager"</strong>
+              Cari dan klik <strong>&quot;File Manager&quot;</strong>
             </li>
             <li>
               Masuk ke folder <code>public_html</code>
             </li>
             <li>
-              Klik tombol <strong>"Upload"</strong>
+              Klik tombol <strong>&quot;Upload&quot;</strong>
             </li>
             <li>Pilih file dari komputer Anda</li>
             <li>Tunggu proses upload selesai</li>
@@ -66,15 +75,15 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
           </p>
           <ol>
             <li>
-              Di cPanel, klik <strong>"Email Accounts"</strong>
+              Di cPanel, klik <strong>&quot;Email Accounts&quot;</strong>
             </li>
             <li>
-              Klik <strong>"Create Email Account"</strong>
+              Klik <strong>&quot;Create Email Account&quot;</strong>
             </li>
             <li>Masukkan username email yang diinginkan</li>
             <li>Buat password yang kuat</li>
             <li>
-              Klik <strong>"Create Account"</strong>
+              Klik <strong>&quot;Create Account&quot;</strong>
             </li>
           </ol>
 
@@ -121,8 +130,8 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
               Login ke dashboard penyedia domain (GoDaddy, Namecheap, dll)
             </li>
             <li>
-              Cari menu <strong>"DNS Management"</strong> atau{" "}
-              <strong>"Nameserver"</strong>
+              Cari menu <strong>&quot;DNS Management&quot;</strong> atau{" "}
+              <strong>&quot;Nameserver&quot;</strong>
             </li>
             <li>Ubah nameserver ke yang diberikan provider hosting</li>
             <li>Simpan perubahan</li>
@@ -289,7 +298,7 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
               Di bagian <strong>File and Storage Services</strong>, expand menu
             </li>
             <li>
-              Centang <strong>"Server for NFS"</strong>
+              Centang <strong>&quot;Server for NFS&quot;</strong>
             </li>
             <li>
               Klik <strong>Next</strong> dan <strong>Install</strong>
@@ -307,7 +316,7 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
               Pilih tab <strong>NFS Sharing</strong>
             </li>
             <li>
-              Centang <strong>"Share this folder"</strong>
+              Centang <strong>&quot;Share this folder&quot;</strong>
             </li>
             <li>Atur permission sesuai kebutuhan</li>
             <li>
@@ -342,10 +351,10 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
           <ol>
             <li>Login ke cPanel hosting</li>
             <li>
-              Cari dan klik <strong>"Email Accounts"</strong>
+              Cari dan klik <strong>&quot;Email Accounts&quot;</strong>
             </li>
             <li>
-              Klik <strong>"Create Email Account"</strong>
+              Klik <strong>&quot;Create Email Account&quot;</strong>
             </li>
             <li>
               Masukkan nama email (misal: <code>info@domain.com</code>)
@@ -353,7 +362,7 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
             <li>Buat password yang kuat</li>
             <li>Atur kuota mailbox (opsional)</li>
             <li>
-              Klik <strong>"Create Account"</strong>
+              Klik <strong>&quot;Create Account&quot;</strong>
             </li>
           </ol>
 
@@ -399,10 +408,10 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
               <strong>Add Account</strong>
             </li>
             <li>
-              Pilih <strong>"Manual setup"</strong>
+              Pilih <strong>&quot;Manual setup&quot;</strong>
             </li>
             <li>
-              Pilih <strong>"POP or IMAP"</strong>
+              Pilih <strong>&quot;POP or IMAP&quot;</strong>
             </li>
             <li>Masukkan informasi server di atas</li>
             <li>Test account settings</li>
@@ -440,7 +449,7 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
             <li>Melindungi data sensitif pengguna</li>
             <li>Meningkatkan kepercayaan pengunjung</li>
             <li>Membantu SEO ranking di Google</li>
-            <li>Mencegah warning "Not Secure" di browser</li>
+            <li>Mencegah warning &quot;Not Secure&quot; di browser</li>
           </ul>
 
           <h3>Generate CSR di cPanel</h3>
@@ -450,20 +459,20 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
           <ol>
             <li>Login ke cPanel</li>
             <li>
-              Cari bagian <strong>"Security"</strong>
+              Cari bagian <strong>&quot;Security&quot;</strong>
             </li>
             <li>
-              Klik <strong>"SSL/TLS"</strong>
+              Klik <strong>&quot;SSL/TLS&quot;</strong>
             </li>
             <li>
               Klik{" "}
               <strong>
-                "Generate, view, or delete SSL certificate signing requests"
+                &quot;Generate, view, or delete SSL certificate signing requests&quot;
               </strong>
             </li>
             <li>Isi informasi domain dan organisasi</li>
             <li>
-              Klik <strong>"Generate"</strong>
+              Klik <strong>&quot;Generate&quot;</strong>
             </li>
             <li>Copy CSR yang dihasilkan</li>
           </ol>
@@ -472,21 +481,21 @@ export default function DetailPage({ params }: { params: { slug: string } }) {
           <p>Setelah mendapat SSL certificate dari provider:</p>
           <ol>
             <li>
-              Kembali ke <strong>SSL/TLS</strong> di cPanel
+              Kembali ke <strong>&quot;SSL/TLS&quot;</strong> di cPanel
             </li>
             <li>
-              Klik <strong>"Manage SSL sites"</strong>
+              Klik <strong>&quot;Manage SSL sites&quot;</strong>
             </li>
             <li>Pilih domain yang akan diinstall SSL</li>
             <li>
-              Paste certificate ke kolom <strong>"Certificate (CRT)"</strong>
+              Paste certificate ke kolom <strong>&quot;Certificate (CRT)&quot;</strong>
             </li>
             <li>
-              Paste private key ke kolom <strong>"Private Key (KEY)"</strong>
+              Paste private key ke kolom <strong>&quot;Private Key (KEY)&quot;</strong>
             </li>
             <li>Paste CA Bundle jika ada</li>
             <li>
-              Klik <strong>"Install Certificate"</strong>
+              Klik <strong>&quot;Install Certificate&quot;</strong>
             </li>
           </ol>
 
