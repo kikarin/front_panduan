@@ -2,55 +2,68 @@
 
 import { useState } from "react";
 import { CalendarDays } from "lucide-react";
+import Link from "next/link";
 
 const allArticles = [
   {
     title: "Cara Submit Jurnal di OJS",
     date: "Juni 13, 2025",
+    slug: "cara-submit-jurnal-di-ojs",
   },
   {
     title: "Cara Mengatasi OJS Logout Sendiri Melalui Setting Session",
     date: "Juni 13, 2025",
+    slug: "cara-mengatasi-ojs-logout-sendiri",
   },
   {
     title: "Cara Membuat Journal di OJS (Open Journal System)",
     date: "Juni 13, 2025",
+    slug: "cara-membuat-journal-di-ojs",
   },
   {
     title: "Cara Membuat Favicon di OJS (Open Journal System)",
     date: "Juni 13, 2025",
+    slug: "cara-membuat-favicon-di-ojs",
   },
   {
     title: "Cara Menghilangkan index.php pada (Open Journal System)",
     date: "Juni 13, 2025",
+    slug: "cara-menghilangkan-indexphp-di-ojs",
   },
   {
     title: "Cara Install Plugin OJS (Open Journal System)",
     date: "Juni 13, 2025",
+    slug: "cara-install-plugin-di-ojs",
   },
   {
     title: "Cara Meningkatkan Keamanan OJS (Open Journal System)",
     date: "Juni 13, 2025",
+    slug: "cara-meningkatkan-keamanan-ojs",
   },
   {
     title: "Cara Menambahkan Google reCAPTCHA di OJS (Open Journal System)",
     date: "Juni 13, 2025",
+    slug: "cara-menambahkan-recaptcha-di-ojs",
   },
   {
     title: "Cara Mengganti Theme OJS (Open Journal System)",
     date: "Juni 12, 2025",
+    slug: "cara-mengganti-theme-di-ojs",
   },
   {
     title: "Cara Reset Password OJS (Open Journal System)",
     date: "Juni 12, 2025",
+    slug: "cara-reset-password-ojs",
   },
   {
-    title: "Cara Menambahkan User di OJS",
+    title: "cara-menambahkan-user-di-ojs",
     date: "Juni 12, 2025",
+    slug: "cara-menambahkan-user-di-ojs",
   },
   {
-    title: "Cara Setting SMTP2GO Pada Domain",
+    title: "cara-setting-smtp2go-pada-domain",
     date: "Juni 12, 2025",
+    slug: "cara-setting-smtp2go-pada-domain",
   },
 ];
 
@@ -68,9 +81,12 @@ export default function PanduanTerbaru() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayedArticles.map((article, index) => (
-            <div
+            <Link
               key={index}
-              className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-200"
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              href={`/panduan-terbaru/${article.slug}`}
+              className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow duration-200 block"
             >
               <h3 className="text-lg font-semibold text-[#282828] mb-4 leading-tight">
                 {article.title}
@@ -82,7 +98,7 @@ export default function PanduanTerbaru() {
                   {article.date}
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

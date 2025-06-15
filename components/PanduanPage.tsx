@@ -9,45 +9,53 @@ const categories = ["Semua", "Hosting", "Domain", "VPS", "Email"];
 
 const guides = [
   {
+    slug: "hosting-cpanel",
     category: "Hosting",
     title: "Panduan Lengkap Hosting (cPanel)",
-    description: "Pelajari cara mengelola hosting dengan cPanel dari dasar hingga advanced",
-    href: "#",
+    description:
+      "Pelajari cara mengelola hosting dengan cPanel dari dasar hingga advanced",
+    href: "/panduan/hosting-cpanel",
     image: "/web.png",
   },
   {
+    slug: "domain",
     category: "Domain",
     title: "Panduan Lengkap Domain",
     description: "Memahami domain, DNS, dan cara konfigurasi yang tepat",
-    href: "#",
+    href: "/panduan/domain",
     image: "/web.png",
   },
   {
+    slug: "vps-linux",
     category: "VPS",
     title: "Panduan Lengkap VM / VPS",
-    description: "Setup dan konfigurasi Virtual Private Server untuk berbagai kebutuhan",
-    href: "#",
+    description:
+      "Setup dan konfigurasi Virtual Private Server untuk berbagai kebutuhan",
+    href: "/panduan/vps-linux",
     image: "/web.png",
   },
   {
+    slug: "windows-nfs",
     category: "VPS",
     title: "Panduan Lengkap VPS Windows",
     description: "Pengelolaan VPS dengan sistem operasi Windows Server",
-    href: "#",
+    href: "/panduan/windows-nfs",
     image: "/web.png",
   },
   {
+    slug: "email-bisnis",
     category: "Email",
     title: "Panduan Lengkap Email Bisnis",
     description: "Setup email profesional untuk bisnis dengan fitur lengkap",
-    href: "#",
+    href: "/panduan/email-bisnis",
     image: "/web.png",
   },
   {
+    slug: "ssl",
     category: "Layanan",
     title: "Panduan Lengkap Layanan SSL",
     description: "Implementasi SSL certificate untuk keamanan website",
-    href: "#",
+    href: "/panduan/ssl",
     image: "/web.png",
   },
 ];
@@ -68,7 +76,8 @@ export default function PanduanPage() {
           Explore Semua Panduan
         </h1>
         <p className="text-lg text-gray-600 leading-relaxed">
-          Temukan panduan lengkap sesuai kebutuhan layanan kamu dengan step-by-step yang mudah diikuti.
+          Temukan panduan lengkap sesuai kebutuhan layanan kamu dengan
+          step-by-step yang mudah diikuti.
         </p>
       </div>
 
@@ -94,6 +103,8 @@ export default function PanduanPage() {
         {filteredGuides.map((guide, idx) => (
           <div
             key={idx}
+            data-aos="fade-up"
+            data-aos-delay={idx * 100}
             className="group bg-white border border-gray-200 rounded-2xl p-6 transition-all duration-200 hover:shadow-lg hover:border-gray-300"
           >
             {/* Category & Read Time */}
@@ -118,7 +129,7 @@ export default function PanduanPage() {
             <h3 className="text-xl font-bold text-gray-900 mb-3 leading-tight">
               {guide.title}
             </h3>
-            
+
             <p className="text-gray-600 mb-6 leading-relaxed">
               {guide.description}
             </p>
@@ -129,7 +140,10 @@ export default function PanduanPage() {
               className="inline-flex items-center text-[#EC662B] font-medium group-hover:underline transition-colors"
             >
               Mulai Belajar
-              <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+              <ArrowRight
+                size={16}
+                className="ml-2 group-hover:translate-x-1 transition-transform duration-200"
+              />
             </Link>
           </div>
         ))}
