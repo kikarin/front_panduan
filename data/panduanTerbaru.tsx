@@ -1,4 +1,13 @@
-export const allArticlesData: Record<string, any> = {
+import React from 'react';
+
+export type PanduanArticle = {
+  category: string;
+  title: string;
+  updated: string;
+  content: React.ReactElement;
+};
+
+export const allArticlesData: Record<string, PanduanArticle> = {
   "cara-submit-jurnal-di-ojs": {
     category: "OJS",
     title: "Cara Submit Jurnal di OJS",
@@ -38,7 +47,7 @@ export const allArticlesData: Record<string, any> = {
       <>
         <p>Untuk membuat jurnal baru, login sebagai Admin dan akses menu Site Admin → Hosted Journals.</p>
         <ul className="list-disc list-inside">
-          <li>Klik “Create Journal”</li>
+          <li>Klik "Create Journal"</li>
           <li>Masukkan nama, path, dan deskripsi</li>
           <li>Simpan dan atur user role</li>
         </ul>

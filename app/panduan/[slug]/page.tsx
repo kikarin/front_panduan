@@ -9,8 +9,8 @@ interface GuideContent {
   content: React.ReactElement;
 }
 
-export default function DetailPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function DetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params; 
 
   const guideMap: Record<string, GuideContent> = {
     "hosting-cpanel": {
