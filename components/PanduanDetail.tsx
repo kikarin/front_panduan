@@ -33,31 +33,52 @@ export default function PanduanDetail({
   content,
 }: PanduanDetailProps) {
   const [openSidebar, setOpenSidebar] = useState(true);
+  const [openDropdowns, setOpenDropdowns] = useState<{ [key: string]: boolean }>({});
 
-  const renderSubtopics = (items: Subtopic[], depth = 0) => {
-    return items.map((item, idx) => (
-      <div key={idx} className={`${depth > 0 ? 'ml-4' : ''}`}>
-        <Link
-          href={item.href}
-          className={`
-            flex items-center px-3 py-2 rounded-lg text-sm
-            transition-colors duration-200 hover:bg-[#EC662B]/10 hover:text-[#EC662B]
-            ${depth === 0 
-              ? "text-[#282828] font-medium" 
-              : "text-gray-600"
-            }
-          `}
-        >
-          <ChevronRight size={14} className="mr-2 flex-shrink-0" />
-          <span>{item.title}</span>
-        </Link>
-        {item.children && (
-          <div className="mt-1">
-            {renderSubtopics(item.children, depth + 1)}
+  const handleDropdown = (key: string) => {
+    setOpenDropdowns((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  const renderSubtopics = (items: Subtopic[], depth = 0, parentKey = "") => {
+    return items.map((item, idx) => {
+      const key = parentKey + idx;
+      const hasChildren = item.children && item.children.length > 0;
+      return (
+        <div key={key} className={`${depth > 0 ? 'ml-4' : ''}`}>
+          <div className="flex items-center">
+            {hasChildren && (
+              <button
+                type="button"
+                className="mr-1 text-[#EC662B] focus:outline-none"
+                onClick={() => handleDropdown(key)}
+                aria-label={openDropdowns[key] ? 'Tutup subtopik' : 'Buka subtopik'}
+              >
+                {openDropdowns[key] ? <ChevronRight size={14} className="rotate-90 transition-transform" /> : <ChevronRight size={14} />}
+              </button>
+            )}
+            <Link
+              href={item.href}
+              className={`
+                flex items-center px-3 py-2 rounded-lg text-sm
+                transition-colors duration-200 hover:bg-[#EC662B]/10 hover:text-[#EC662B]
+                ${depth === 0 
+                  ? "text-[#282828] font-medium" 
+                  : "text-gray-600"
+                }
+              `}
+            >
+              {!hasChildren && <ChevronRight size={14} className="mr-2 flex-shrink-0" />}
+              <span>{item.title}</span>
+            </Link>
           </div>
-        )}
-      </div>
-    ));
+          {hasChildren && openDropdowns[key] && (
+            <div className="mt-1">
+              {renderSubtopics(item.children!, depth + 1, key + "-")}
+            </div>
+          )}
+        </div>
+      );
+    });
   };
 
   return (

@@ -5,7 +5,7 @@ interface GuideContent {
   category: string;
   title: string;
   updated: string;
-  subtopics: Array<{ title: string; href: string }>;
+  subtopics: Array<{ title: string; href: string; children?: Array<{ title: string; href: string }> }>;
   content: React.ReactElement;
 }
 
@@ -19,8 +19,20 @@ export default async function DetailPage({ params }: { params: Promise<{ slug: s
       updated: "Mei 10, 2024",
       subtopics: [
         { title: "Pengenalan cPanel", href: "#intro" },
-        { title: "Login ke cPanel", href: "#login" },
-        { title: "Upload File Website", href: "#upload" },
+        { 
+          title: "Login ke cPanel", href: "#login",
+          children: [
+            { title: "Login via URL", href: "#login-url" },
+            { title: "Login via Provider", href: "#login-provider" }
+          ]
+        },
+        { 
+          title: "Upload File Website", href: "#upload",
+          children: [
+            { title: "Upload via File Manager", href: "#upload-file-manager" },
+            { title: "Upload via FTP", href: "#upload-ftp" }
+          ]
+        },
         { title: "Kelola Email di cPanel", href: "#email" },
         { title: "Backup Data", href: "#backup" },
       ],
@@ -104,9 +116,22 @@ export default async function DetailPage({ params }: { params: Promise<{ slug: s
       updated: "Mei 14, 2024",
       subtopics: [
         { title: "Konsep Domain & DNS", href: "#konsep" },
-        { title: "Arahkan Domain ke Hosting", href: "#arahkan" },
+        { 
+          title: "Arahkan Domain ke Hosting", href: "#arahkan",
+          children: [
+            { title: "Arahkan via Nameserver", href: "#arahkan-ns" },
+            { title: "Arahkan via A Record", href: "#arahkan-a-record" }
+          ]
+        },
         { title: "Ubah Nameserver", href: "#nameserver" },
-        { title: "Kelola DNS Record", href: "#dns-record" },
+        { 
+          title: "Kelola DNS Record", href: "#dns-record",
+          children: [
+            { title: "A Record", href: "#dns-a" },
+            { title: "CNAME Record", href: "#dns-cname" },
+            { title: "MX Record", href: "#dns-mx" }
+          ]
+        },
       ],
       content: (
         <>
@@ -178,9 +203,22 @@ export default async function DetailPage({ params }: { params: Promise<{ slug: s
       title: "Setup VPS dengan Linux (Ubuntu/Debian)",
       updated: "Mei 20, 2024",
       subtopics: [
-        { title: "Akses via SSH", href: "#ssh" },
+        { 
+          title: "Akses via SSH", href: "#ssh",
+          children: [
+            { title: "SSH dari Windows", href: "#ssh-windows" },
+            { title: "SSH dari Linux/Mac", href: "#ssh-linux" }
+          ]
+        },
         { title: "Update Sistem", href: "#update" },
-        { title: "Install LAMP Stack", href: "#lamp" },
+        { 
+          title: "Install LAMP Stack", href: "#lamp",
+          children: [
+            { title: "Install Apache", href: "#lamp-apache" },
+            { title: "Install MySQL", href: "#lamp-mysql" },
+            { title: "Install PHP", href: "#lamp-php" }
+          ]
+        },
         { title: "Amankan VPS", href: "#security" },
       ],
       content: (
@@ -268,8 +306,20 @@ export default async function DetailPage({ params }: { params: Promise<{ slug: s
       updated: "April 5, 2024",
       subtopics: [
         { title: "Mengakses RDP Windows", href: "#rdp" },
-        { title: "Install NFS Role", href: "#install" },
-        { title: "Konfigurasi NFS", href: "#config" },
+        { 
+          title: "Install NFS Role", href: "#install",
+          children: [
+            { title: "Install via Server Manager", href: "#install-server-manager" },
+            { title: "Install via PowerShell", href: "#install-powershell" }
+          ]
+        },
+        { 
+          title: "Konfigurasi NFS", href: "#config",
+          children: [
+            { title: "Konfigurasi Shared Folder", href: "#config-shared" },
+            { title: "Konfigurasi Permission", href: "#config-permission" }
+          ]
+        },
         { title: "Testing NFS", href: "#test" },
       ],
       content: (
@@ -339,9 +389,21 @@ export default async function DetailPage({ params }: { params: Promise<{ slug: s
       title: "Cara Setup Email Bisnis di Hosting",
       updated: "Juni 1, 2024",
       subtopics: [
-        { title: "Buat Akun Email", href: "#create" },
+        { 
+          title: "Buat Akun Email", href: "#create",
+          children: [
+            { title: "Setting Password", href: "#create-password" },
+            { title: "Atur Kuota", href: "#create-quota" }
+          ]
+        },
         { title: "Akses Webmail", href: "#webmail" },
-        { title: "Konfigurasi Outlook", href: "#outlook" },
+        { 
+          title: "Konfigurasi Outlook", href: "#outlook",
+          children: [
+            { title: "IMAP", href: "#outlook-imap" },
+            { title: "SMTP", href: "#outlook-smtp" }
+          ]
+        },
         { title: "Setting Mobile", href: "#mobile" },
       ],
       content: (
@@ -429,8 +491,20 @@ export default async function DetailPage({ params }: { params: Promise<{ slug: s
       updated: "Juni 10, 2024",
       subtopics: [
         { title: "Apa itu SSL", href: "#about" },
-        { title: "Generate CSR", href: "#csr" },
-        { title: "Install SSL via cPanel", href: "#install" },
+        { 
+          title: "Generate CSR", href: "#csr",
+          children: [
+            { title: "Generate via cPanel", href: "#csr-cpanel" },
+            { title: "Generate via CLI", href: "#csr-cli" }
+          ]
+        },
+        { 
+          title: "Install SSL via cPanel", href: "#install",
+          children: [
+            { title: "Install Manual", href: "#install-manual" },
+            { title: "Install Otomatis", href: "#install-auto" }
+          ]
+        },
         { title: "Cek Status SSL", href: "#check" },
       ],
       content: (
